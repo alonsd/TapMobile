@@ -28,7 +28,7 @@ import com.tap.ui.screens.dashboard.viewmodel.DashboardViewModel
 @Destination
 @Composable
 fun DashboardScreen(
-    navigator: DestinationsNavigator, //Navigator would be used for navigating after list item click 
+    navigator: DestinationsNavigator, //Navigator would be used for navigating after list item click
     viewModel: DashboardViewModel = hiltViewModel()
 ) {
 

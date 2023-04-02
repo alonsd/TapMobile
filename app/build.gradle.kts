@@ -87,7 +87,6 @@ dependencies {
     implementation("androidx.compose.animation:animation:1.5.0-alpha01")
     implementation("androidx.compose.ui:ui-tooling:1.5.0-alpha01")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.5.0-alpha01")
 
     //Coil
     implementation("io.coil-kt:coil-compose:2.2.2")
@@ -116,7 +115,6 @@ dependencies {
     //Gson & Converter Adapters
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
 
     //Dagger - Hilt
     implementation("com.google.dagger:hilt-android:2.44.2")
@@ -126,10 +124,6 @@ dependencies {
     //Compose Destinations
     implementation("io.github.raamcosta.compose-destinations:animations-core:1.8.33-beta")
     ksp("io.github.raamcosta.compose-destinations:ksp:1.8.33-beta")
-
-    //jsoup
-    implementation("org.jsoup:jsoup:1.15.4")
-
 
 }
 

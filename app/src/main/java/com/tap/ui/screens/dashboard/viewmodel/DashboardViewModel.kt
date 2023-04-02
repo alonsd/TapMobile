@@ -34,7 +34,7 @@ class DashboardViewModel @Inject constructor(
 
     private fun observeUiAction() = viewModelScope.launch {
         uiAction.collect { action ->
-            when(action) {
+            when (action) {
                 is UiAction.ListItemClicked -> {
 
                 }
@@ -145,7 +145,11 @@ class DashboardViewModel @Inject constructor(
 
     data class UiState(
         val state: State = State.Initial,
-        val searchState: SearchState = SearchState("Apple", focused = false, searching = true),
+        val searchState: SearchState = SearchState(
+            "Apple", //Default search query for fast loading of the UI 
+            focused = false,
+            searching = true
+        ),
         val youtubeListItems: List<YouTubeListItemModel> = emptyList()
     ) {
         enum class State {
@@ -156,6 +160,6 @@ class DashboardViewModel @Inject constructor(
     }
 
     sealed interface UiAction {
-        data class ListItemClicked(val videoId : String) : UiAction
+        data class ListItemClicked(val videoId: String) : UiAction
     }
 }
