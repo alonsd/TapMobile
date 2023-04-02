@@ -18,5 +18,5 @@ dependencyResolutionManagement {
         }
     }
 }
-rootProject.name = "Tap"
+rootProject.name = "Tap Mobile"
 include(":app")
