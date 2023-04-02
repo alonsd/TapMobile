@@ -21,7 +21,7 @@ class DashboardViewModel @Inject constructor(
     val uiState = _uiState.asStateFlow()
 
     private val _uiAction = MutableSharedFlow<UiAction>()
-    val uiAction = _uiAction.asSharedFlow()
+    private val uiAction = _uiAction.asSharedFlow()
 
     private val _uiEvent = MutableSharedFlow<UiEvent>()
     private val uiEvent = _uiEvent.asSharedFlow()
@@ -29,6 +29,17 @@ class DashboardViewModel @Inject constructor(
     init {
         onQueryChanged(_uiState.value.searchState.query)
         observeUiEvents()
+        observeUiAction()
+    }
+
+    private fun observeUiAction() = viewModelScope.launch {
+        uiAction.collect { action ->
+            when(action) {
+                is UiAction.ListItemClicked -> {
+
+                }
+            }
+        }
     }
 
     private fun observeUiEvents() = viewModelScope.launch {
@@ -87,6 +98,10 @@ class DashboardViewModel @Inject constructor(
     private fun parseResultsModelToUiModel(result: NetworkResponse.Success<YoutubeSearchResultModel>): MutableList<YouTubeListItemModel> {
         val youtubeListItemModels = mutableListOf<YouTubeListItemModel>()
         result.body.items.forEach { item ->
+            /*
+            Some values where missing, therefore there are some default hard coded values.
+            Couldn't investigate anymore due to exceeding the API daily limit.
+             */
             val title = item.snippet.title ?: "title"
             val thumbnail = item.snippet.thumbnails.default.url ?: ""
             val videoId = item.id.videoId ?: "1"
@@ -107,7 +122,9 @@ class DashboardViewModel @Inject constructor(
         )
     }
 
-
+    /**
+     * Actions would be used for navigation after the user clicked on a list item
+     */
     private fun submitAction(uiAction: UiAction) = viewModelScope.launch {
         _uiAction.emit(uiAction)
     }
@@ -139,6 +156,6 @@ class DashboardViewModel @Inject constructor(
     }
 
     sealed interface UiAction {
-
+        data class ListItemClicked(val videoId : String) : UiAction
     }
 }
