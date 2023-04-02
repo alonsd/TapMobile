@@ -1,6 +1,7 @@
 package com.tap.di
 
 import android.util.Log
+import com.haroldadmin.cnradapter.NetworkResponseAdapter
 import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.tap.core.constants.NetworkConstants
 import com.tap.data.source.remote.api.YoutubeApi
@@ -11,6 +12,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import javax.inject.Singleton
 
@@ -30,7 +32,8 @@ object NetworkModule {
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(NetworkConstants.BASE_URL)
-            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(NetworkResponseAdapterFactory())
             .client(provideOkHttpClient())
             .build()
     }

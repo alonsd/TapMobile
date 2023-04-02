@@ -24,7 +24,8 @@ class DashboardViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            dashboardRepository.getSearchTermResults()
+            val searchTermResults = dashboardRepository.getSearchTermResults("apple")
+            val x = 5
         }
     }
 
