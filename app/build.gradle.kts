@@ -89,6 +89,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.5.0-alpha01")
 
+    //Coil
+    implementation("io.coil-kt:coil-compose:2.2.2")
+
     //Kotlin
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")

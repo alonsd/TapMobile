@@ -2,6 +2,10 @@
 
     <!--    App Name-->
     <string name="app_name">Tap Mobile</string>
+    <string name="core_ui_search_bar_hint">Enter a search query</string>
+    <string name="dashboard_list_item_play_icon_content_description">Play Video</string>
+    <string name="dashboard_list_item_video_icon_content_description">Youtube Video</string>
+    <string name="general_server_error">Server Error</string>
 
 
 </resources>

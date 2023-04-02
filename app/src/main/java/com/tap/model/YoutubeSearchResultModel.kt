@@ -17,7 +17,7 @@ data class YoutubeSearchResultModel(
         data class Id(
             val channelId: String,
             val kind: String,
-            val videoId: String
+            val videoId: String?
         )
 
         data class Snippet(
@@ -28,7 +28,7 @@ data class YoutubeSearchResultModel(
             val publishTime: String,
             val publishedAt: String,
             val thumbnails: Thumbnails,
-            val title: String
+            val title: String?
         ) {
             data class Thumbnails(
                 val default: Default,
@@ -37,7 +37,7 @@ data class YoutubeSearchResultModel(
             ) {
                 data class Default(
                     val height: Int,
-                    val url: String,
+                    val url: String?,
                     val width: Int
                 )
 
